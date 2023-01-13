@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 require_relative 'third_question/newsletter'
 require_relative 'third_question/observer'
