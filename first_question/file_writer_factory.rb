@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'mime/types'
 require 'titleize'
 
 class FileWriterFactory
