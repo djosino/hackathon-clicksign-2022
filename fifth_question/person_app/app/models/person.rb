@@ -5,6 +5,7 @@ class Person < ApplicationRecord
   }, _default: 0
 
   validates :document_number, presence: true
+
   validate :valid_document_number
 
   private
