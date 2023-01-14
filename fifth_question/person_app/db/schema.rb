@@ -12,8 +12,8 @@
 
 ActiveRecord::Schema[7.0].define(version: 2023_01_14_000912) do
   create_table "people", force: :cascade do |t|
-    t.integer "kind", default: 0
-    t.string "document_number", limit: 14
+    t.integer "kind", default: 0, null: false
+    t.string "document_number", limit: 14, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
