@@ -1,9 +1,5 @@
 # frozen_string_literal: true
 
-require 'json'
-require 'active_support'
-require 'active_support/core_ext'
-
 class WriterAbstract
   CONTENT = {
     'breakfast_menu': {
@@ -39,6 +35,8 @@ class WriterAbstract
 end
 
 class JsonWriter < WriterAbstract
+  require 'json'
+
   def self.writer
     File.write('file.json', content)
   end
@@ -49,6 +47,9 @@ class JsonWriter < WriterAbstract
 end
 
 class XMLWriter < WriterAbstract
+  require 'active_support'
+  require 'active_support/core_ext'
+
   def self.writer
     File.write('file.xml', content)
   end
