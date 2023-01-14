@@ -30,6 +30,14 @@ class WriterAbstract
   }.freeze
 
   def self.writer
+    File.write(filename, content)
+  end
+
+  def self.filename
+    raise NotImplementedError
+  end
+
+  def self.content
     raise NotImplementedError
   end
 end
@@ -37,8 +45,8 @@ end
 class JsonWriter < WriterAbstract
   require 'json'
 
-  def self.writer
-    File.write('file.json', content)
+  def self.filename
+    'file.json'
   end
 
   def self.content
@@ -50,8 +58,8 @@ class XMLWriter < WriterAbstract
   require 'active_support'
   require 'active_support/core_ext'
 
-  def self.writer
-    File.write('file.xml', content)
+  def self.filename
+    'file.xml'
   end
 
   def self.content
