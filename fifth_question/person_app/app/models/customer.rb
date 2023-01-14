@@ -1,5 +1,6 @@
-class NaturalPerson < Person
-  validates :kind, inclusion: { in: %w[natural] }, presence: true
+class Customer < Person
+  validates :kind, inclusion: { in: %w[customer] }, presence: true
+
   validates :document_number, length: { is: 11 }
 
   private

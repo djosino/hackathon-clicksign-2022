@@ -1,12 +1,12 @@
-class LegalPerson < Person
-  validates :kind, inclusion: { in: %w[legal] }, presence: true
+class Provider < Person
+  validates :kind, inclusion: { in: %w[provider] }, presence: true
 
   validates :document_number, length: { is: 14 }
 
   def initialize(attributes = {})
     super
 
-    self.kind = :legal
+    self.kind = :provider
   end
 
   private

@@ -1,7 +1,7 @@
 class Person < ApplicationRecord
   enum kind: {
-    natural: 0,
-    legal: 1
+    customer: 0,
+    provider: 1
   }, _default: 0
 
   validates :document_number, presence: true
