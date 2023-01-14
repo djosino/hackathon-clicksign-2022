@@ -4,7 +4,7 @@ require 'json'
 require 'active_support'
 require 'active_support/core_ext'
 
-class FileWriter
+class WriterAbstract
   CONTENT = {
     'breakfast_menu': {
       'food': [
@@ -38,7 +38,7 @@ class FileWriter
   end
 end
 
-class JsonWriter < FileWriter
+class JsonWriter < WriterAbstract
   def self.writer
     File.write('file.json', content)
   end
@@ -48,7 +48,7 @@ class JsonWriter < FileWriter
   end
 end
 
-class XMLWriter < FileWriter
+class XMLWriter < WriterAbstract
   def self.writer
     File.write('file.xml', content)
   end
@@ -58,15 +58,23 @@ class XMLWriter < FileWriter
   end
 end
 
+class FileWriter
+  STRATEGY = {
+    'JSON' => JsonWriter,
+    'XML' => XMLWriter
+  }.freeze
+
+  def self.writer(strategy)
+    STRATEGY[strategy].writer
+  end
+end
+
 puts 'Qual arquivo você deseja salvar?'
 puts 'JSON'
 puts 'XML'
 
 option = gets.chomp
 
-case option
-when 'JSON'
-  JsonWriter.writer
-when 'XML'
-  XMLWriter.writer
+if option.in?(%w[JSON XML])
+  FileWriter.writer(option)
 end
